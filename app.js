@@ -8,7 +8,7 @@ const path = require('path')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug')
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 const socketSetup = require('./sockets')(io)
 
