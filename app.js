@@ -4,13 +4,24 @@ const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const pug = require('pug')
 const path = require('path')
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug')
+const fs = require('fs')
 
 const port = process.env.PORT || 3000
 
+const dir = './sockDb'
+fs.stat(dir, (err, stats) => {
+  if(err && err.errno === -2) {
+    fs.mkdirSync(dir, (err) => {
+      if(err)
+          throw new Error("Error creating sockDb folder");
+    });
+  }
+});
+
 const socketSetup = require('./sockets')(io)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug')
+
 
 app.get('/', (req, res) => {
   res.render('index')
