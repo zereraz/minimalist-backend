@@ -1,5 +1,5 @@
 const level = require('levelup')
-const sockDb = level('../sockDb', {valueEncoding: 'json'})
+const sockDb = level('./sockDb', {valueEncoding: 'json'})
 
 sockDb.put('test', 'value')
 

@@ -7,18 +7,8 @@ const path = require('path')
 const fs = require('fs')
 
 const port = process.env.PORT || 3000
-
-const dir = './sockDb'
-fs.stat(dir, (err, stats) => {
-  if(err && err.errno === -2) {
-    fs.mkdirSync(dir, (err) => {
-      if(err)
-          throw new Error("Error creating sockDb folder");
-    });
-  }
-});
-
 const socketSetup = require('./sockets')(io)
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug')
 
