@@ -1,9 +1,11 @@
 ## minimalist backend
 
 
-# DB
+### DB
   - levelup
-# Websockets
+
+### Websockets
   - socket.io
-# templating
+
+### templating
   - pug
